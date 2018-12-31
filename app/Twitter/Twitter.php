@@ -11,7 +11,9 @@ namespace App\Twitter;
 
 class Twitter
 {
-    public function __construct(){
+    public function __construct()
+    {
 
     }
+
 }
