@@ -16,12 +16,15 @@ class CreateTwitterAccountsTable extends Migration
         Schema::create('twitter_accounts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('oauth_access_token')->nullable();
-            $table->string('oauth_access_token_secret')->nullable();
-            $table->string('consumer_key')->nullable();
-            $table->string('consumer_secret')->nullable();
+            $table->string('description');
+            $table->string('application_oauth_access_token')->nullable();
+            $table->string('application_oauth_access_token_secret')->nullable();
+            $table->string('application_consumer_key')->nullable();
+            $table->string('application_consumer_secret')->nullable();
             $table->string('username')->nullable();
             $table->string('password')->nullable();
+            $table->integer('active')->nullable()->dafault(0);
+
             $table->timestamps();
         });
     }

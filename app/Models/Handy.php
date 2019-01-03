@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Wildside\Userstamps\Userstamps;
 
-class Tweet extends Model
+class Handy extends Model
 {
     use Userstamps,
         LogsActivity;
@@ -14,15 +14,7 @@ class Tweet extends Model
     protected $guarded = ['id'];
 
     protected $casts = [
-        'media' => 'array',
-      'tweet_media' => 'array',
-      'tweet_quoted' => 'array',
-      'tweet_user' => 'array',
     ];
-
-    public function twitterAccount() {
-        return $this->belongsTo(TelegramChannel::class);
-    }
 
     public function telegramChannel() {
         return $this->belongsTo(TelegramChannel::class);

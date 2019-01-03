@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTelegramChannelsTable extends Migration
+class CreateHandiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateTelegramChannelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('telegram_channels', function (Blueprint $table) {
+        Schema::create('handies', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('channel_id');
-            $table->string('name')->nullable()->default(null);
-            $table->string('description')->nullable()->default(null);
-            $table->integer('active')->default(1);
+            $table->text('text');
+            $table->text('media')->nullable();
+            $table->integer('point')->nullable();
+            $table->string('telegram_channel_id');
 
             $table->timestamps();
         });
@@ -31,6 +31,6 @@ class CreateTelegramChannelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('telegram_channels');
+        Schema::dropIfExists('crafts');
     }
 }

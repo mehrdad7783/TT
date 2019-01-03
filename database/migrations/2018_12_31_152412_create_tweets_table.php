@@ -14,11 +14,16 @@ class CreateTweetsTable extends Migration
     public function up()
     {
         Schema::create('tweets', function (Blueprint $table) {
+
             $table->increments('id');
+            $table->text('text');
+            $table->text('media')->nullable();
+            $table->integer('point')->nullable();
+
+            $table->string('twitter_account_id');
+            $table->string('telegram_channel_id');
+
             $table->bigInteger('tweet_id')->nullable();
-            $table->string('twitter_account_id'); //fetcher id
-            $table->text('tweet_text')->nullable(); //including urls
-            $table->text('tweet_media')->nullable(); //json of medias
             $table->text('tweet_quoted_tweet')->nullable(); // json of quoted
             $table->text('tweet_user')->nullable(); //json including id, user_name, screen_name, verified
             $table->string('tweet_retweet_count')->nullable();
@@ -26,7 +31,8 @@ class CreateTweetsTable extends Migration
             $table->string('tweet_is_favorited')->nullable();
             $table->string('tweet_is_retweeted')->nullable();
             $table->dateTime('tweet_created_at')->nullable();
-            $table->integer('point')->nullable();
+
+
             $table->timestamps();
         });
     }

@@ -17,6 +17,8 @@ class CreateUserTelegramChannelsTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('telegram_channel_id');
+
+
             $table->timestamps();
         });
     }

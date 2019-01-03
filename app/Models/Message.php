@@ -2,24 +2,25 @@
 
 namespace App\Models;
 
-use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Wildside\Userstamps\Userstamps;
 
-class TwitterAccount extends Model
+class Message extends Model
 {
     use Userstamps,
         LogsActivity;
 
     protected $guarded = ['id'];
 
-    public function user(){
-        return $this->belongsTo(User::Class);
+    protected $casts = [
+    ];
+
+    public function telegramChannel() {
+        return $this->belongsTo(TelegramChannel::class);
     }
 
-    public function telegramChannels(){
-        return $this->belongsToMany(TelegramChannel::Class);
+    public function messageable() {
+        $this->morphTo();
     }
-
 }
